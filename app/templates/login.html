@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <script src="{{ url_for('static', filename='js/jquery-3.1.1.js')}}"></script>
+  </head>
+  <body>
+    <section class="login-form">
+      <h1>
+        {{ type }}
+      </h1>
+      <form action="{{ action }}" method="POST">
+        <div class="int-area">
+          <input type="text" name="username" id="id username" autocomplete="off" required required pattern="[a-zA-Z0-9]+">
+          <label for="id">USERNAME</label>   
+        </div>
+        <div class="int-area">
+          <input type="password" name="password" id="pw password" autocomplete="off" required>
+          <label for="pw">PASSWORD</label>
+        </div>
+        <div class="btn-area">
+          <button type="submit" name="submit">
+            {{ type }}
+          </button>
+        </div>
+      </form>
+      <div class="caption">
+        <a href="{{ otherA }}">{{ otherT }}</a>
+      </div>
+    </section>
+    
+    <script>
+      let id = $("#id");
+      let pw = $("#pw");
+      let btn = $("#btn");
+      
+      $(btn).on('click', function() {
+        if($(id).val() == "") {
+          $(id).next('label').addClass('warning');
+          setTimeout(function() {
+            $('label').removeClass('warning');
+          },1500);
+        }
+        else if($(pw).val() == "") {
+          $(pw).next('label').addClass('warning');
+          setTimeout(function() {
+            $('label').removeClass('warning');
+          },1500);
+        }
+      });
+    </script>
+  </body>
+</html>

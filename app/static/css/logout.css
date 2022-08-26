@@ -1,0 +1,22 @@
+.btn-area button {
+  display: block;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px 16px;
+  width: 100px;
+  background-color: var(--text-color);
+  border-radius: 6px;
+  margin-inline: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: auto;
+  text-align: center;
+}
+.btn-area button:hover {
+  opacity: 0.8;
+}
+.btn-area button a {
+  color: var(--nav-color);
+  text-decoration: none;
+}

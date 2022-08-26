@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Predicts Florida Man Headlines</title>
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+  <head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="">Home</a>
+        </li>
+
+        <li>
+          <a href="model">Our Model</a>
+        </li>
+
+        <li>
+          <a href="#team_section">The Team</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <section id="overview">
+        <h1> AI Predicts Florida Man Headlines </h1>
+        <h2> Overview </h2>
+        <h3> We trained a model on Florida man headlines to teach it to generate new headlines based on a user input using a GPT2 model. </h3>
+      </section>
+
+      <!-- Ria -->
+
+      <section id="process">
+        <h2> Process </h2>
+
+        <ul>
+          <li>Step 1: Collect Data
+          
+          </li>
+
+          <li>Step 2: Pre-Processing
+            <p> As we were looking through our dataset, we found multiple spam messages and unrelated posts in our data set. We used the python library,<a target="_blank" href="https://towardsdatascience.com/a-quick-introduction-to-the-pandas-python-library-f1b678f34673">pandas</a>, and different python methods to remove all of the unrelated posts from the dataset.
+            </p>
+          </li>
+
+          <li>Step 3: Train Model
+            <p>
+              We used <a target="_blank" href="https://docs.aitextgen.io/">Aitextgen</a> to fine-tune an existing <a target="_blank" href="https://huggingface.co/gpt2">GPT-2</a> model and then trained the model for about 20 minutes on our filtered data set.
+            </p>
+          </li>
+          <li>Step 4: Post-Processing
+            <p>
+              To make our project more believable we generated mugshots to go with our headlines. To do this we compiled a file of different men and woman mugshots. We had the model randomly pick a mugshot depending if the the AI generated a headline to do with Florida Man or Woman. We also used the package,  <a target="_blank" href="https://pypi.org/project/better-profanity/">Better_Profanity</a>, to ensure that our headlines were clean. Lastly to we capitalized the main words in our headline.
+            </p>
+          </li> 
+          <li>Step 5: Deploy Product
+            <p>
+              After creating a working model, we used <a target="_blank" href="https://pythonbasics.org/what-is-flask-python/">Flask</a> to deploy it.
+            </p>
+          </li>
+          <li> Tech Stack: 
+            <ul>
+              <li class="mini"> Aitextgen </li>
+              <li class="mini"> GPT-2 </li>
+              <li class="mini"> Flask  </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <!-- Jamie -->
+
+      <section id="team_section">
+        <h2>
+          - About the Team -
+        </h2>
+        <div id="team">
+          <div>
+            <img src=
+            "https://i.pinimg.com/736x/93/27/e7/9327e7da553a3111959de04fdf2e2eb4.jpg">
+            <p> Kalen Shamy <br><br> <b>"Project Manager"</b></p>
+            <div class="team_links">
+              <a class="media_link" href="https://github.com/KalenShamy" target="_blank">
+                <svg height="32" width="32" viewBox="0 0 16 16" version="1.1">
+                  <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+              </a>
+              <a class="media_link" href="mailto:info@createdbykalen.com" target="_blank">
+                <svg height="32" width="32" viewBox="0 0 16 16" version="1.1">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                </svg>
+              </a>
+              <a class="media_link" href="https://createdbykalen.com" target="_blank">
+                <svg height="32" width="32" viewBox="0 0 16 16" version="1.1">
+                  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <img src=
+            "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&amp;v=2&amp;jpgQuality=100&amp;width=700&amp;url=https%3A%2F%2Fi.kym-cdn.com%2Fphotos%2Fimages%2Fnewsfeed%2F001%2F688%2F970%2Fa72.jpg">
+            <p>
+              Michael Huang
+              <br>
+              <br>
+              <b>"Project Manager"</b>
+            </p>
+            <div class="team_links">
+              <h2>No links</h2>
+            </div>
+          </div>
+
+          <div>
+            <img src=
+            "https://preview.redd.it/9to8eyhu04121.jpg?auto=webp&amp;s=0dcf706d287968f31a0daee5ad8dee88ce74393c">
+            <p>
+              Jeehoon (Jamie) Ryu
+              <br>
+              <br>
+              <b>"DESCRIPTION"</b>
+            </p>
+            <div class="team_links">
+              <h2>No links</h2>
+            </div>
+          </div>
+
+          <div>
+            <img src=
+            "https://iheartdogs.com/wp-content/uploads/2019/01/sor.rra_120592667_978511705892386_5769616424235419240_n-e1601596992366.jpg">
+            <p>
+              Emily Kim-Vance
+              <br>
+              <br>
+              <b>"DESCRIPTION"</b>
+            </p>
+            <div class="team_links">
+              <h2>No links</h2>
+            </div>
+          </div>
+
+          <div>
+            <img src=
+            "https://64.media.tumblr.com/a2bc07aa965eba05426827c9a1673cba/52775518857f3ece-77/s500x750/c311798464e750126552bae9aabb112c2520a85f.jpg">
+            <p>
+              Ria Gulati
+              <br>
+              <br>
+              <b>"DESCRIPTION"</b>
+            </p>
+            <div class="team_links">
+              <h2>No links</h2>
+            </div>
+          </div>
+
+          <div>
+            <img src=
+            "https://cdn.discordapp.com/attachments/1005958240124805162/1009539603524489216/unknown.png">
+            <p>
+              Parker Kline
+              <br>
+              <br>
+              <b>"My dog found the camera"</b>
+            </p>
+            <div class="team_links">
+              <h2>No links</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <a href="https://shrek.fandom.com/wiki/Shrek_(film)/Transcript">Privacy Policy</a>
+      <br>
+       <a href="https://www.ai-camp.org/">Ai Camps Website</a>
+      <br>
+       <a href="https://github.com/hghamblin/SC22-BatchD-CellarRogues">Github</a>
+    </footer>
+  </body>
+</html>  

@@ -1,0 +1,2 @@
+pytorch_model.bin - https://drive.google.com/file/d/16p20G4DtyK6CnxGhHhKGrYl7l4InGdIh/view?usp=sharing
+config.json - https://drive.google.com/file/d/1YyVtawD3lhlGXBJcEAQdg9LDOcK9yBhF/view?usp=sharing

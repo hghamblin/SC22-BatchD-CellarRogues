@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Headline Explorer - AI Predicts Florida Man Headlines
+    </title>
+    <link href="../static/css/styles.css" rel="stylesheet">
+    <link href="../static/css/logout.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Bootstrap Font Icon CSS -->
+    <link href=
+    "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    rel="stylesheet"><!-- Google Login -->
+
+    <script async defer src="https://apis.google.com/js/platform.js"></script>
+    <meta content=
+    "21066203608-979cdn7qgvtckkg1gaaclidad5rnu6lr.apps.googleusercontent.com"
+    name="google-signin-client_id"><!-- JQUERY + AJAX -->
+
+    <script src="../static/js/jquery-3.1.1.js"></script>
+    <script src="../static/js/dark_mode.js"></script>
+    <script>
+      function updateLikes(headline_id, is_like) {
+        $.ajax({
+          url: '../headline_mod/updateLikes/',
+          method: 'POST',
+          data: {headline_id: headline_id, like: is_like},
+          success: function(response) {
+            var obj = response;
+            $('#likes_' + headline_id).html(obj.likes);
+            if (obj.choice == 1) {
+              document.getElementById("dislike_svg_" + headline_id).className = "bi bi-caret-down";
+              document.getElementById("like_svg_" + headline_id).className = "bi bi-caret-up-fill";
+            } else if (obj.choice == -1) {
+              document.getElementById("like_svg_" + headline_id).className = "bi bi-caret-up";
+              document.getElementById("dislike_svg_" + headline_id).className = "bi bi-caret-down-fill";
+            } else {
+              document.getElementById("like_svg_" + headline_id).className = "bi bi-caret-up";
+              document.getElementById("dislike_svg_" + headline_id).className = "bi bi-caret-down";
+            }
+          },
+          error: function(error) {
+            if (error.responseText == "LOGIN") {
+              window.open("/{{ base_url }}login", target="_blank").focus();
+            } else {
+              console.log(error);
+            }
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <i class="bi bi-list" id="mobile_nav_button" onclick=
+        "toggle_nav()"></i> <img class="logo" src=
+        "../static/images/florida_man.png">
+        <div class="menu">
+          <ul class="nav-links">
+            <li>
+              <a href="../">Home</a>
+            </li>
+            
+            <li>
+              <a href="../model">Model</a>
+            </li>
+            
+            
+            <li>
+              <a href="../headline_explorer">Headline Explorer</a>
+            </li>
+            <a href="https://www.ai-camp.org"><img alt="HTML tutorial" src=
+            "https://static.wixstatic.com/media/12b467_a4ceef0f338c41c7885cb083ea36a00f~mv2_d_1742_1743_s_2.png/v1/fill/w_68,h_68,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ai%20camp%20logo.pn"
+            style="width:42px;height:42px;"></a>
+          </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+          <div class="dark-light">
+            <i class="bi bi-moon-fill" id="moon"></i> <i class="bi bi-sun" id=
+            "sun"></i>
+          </div>
+
+          <div class="searchBox">
+            <div class="searchToggle">
+              <a href="../profile" style="width:22px;height:26px;"><i class=
+              "bi bi-person-circle"></i></a>
+            </div>
+          </div>
+
+          <div class="btn-area">
+            <button><a href="../logout" id="logout">LOGOUT</a></button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <script>
+    var mobile_nav = false;
+    function toggle_nav() {
+      if (!mobile_nav) {
+        document.getElementsByTagName("nav")[0].style.paddingBottom = "100px";
+        document.getElementsByTagName("nav")[0].style.height = "200px";
+        mobile_nav = true;
+      } else {
+        document.getElementsByTagName("nav")[0].style.paddingBottom = "";
+        document.getElementsByTagName("nav")[0].style.height = "";
+        mobile_nav = false;
+      }
+    }
+    </script>
+    <section id="headlines">
+      <div id="generation">
+        <div id="news_banner">
+          <h1>
+            The Florida News - You Recently Liked
+          </h1>
+        </div>
+
+        <div id="headline_list">
+          {% for headline, headline_image, date, headline_likes, prompt,
+          user_choice, headline_id, place in headlines %}
+          <div class="headline_preview no_place">
+            <div class="headline_preview_background">
+          </div>
+            <a href="../headline/{{headline_id}}">
+            <h1>
+              {{ headline }}
+            </h1></a> <!--             <h2>
+              #{{ place }}
+            </h2> -->
+
+            <div class="reactions">
+              <span><a id="like" onclick=
+              "updateLikes('{{ headline_id }}', true)">{% if user_choice == 1
+              %} <i class="bi bi-caret-up-fill" id=
+              "like_svg_{{ headline_id }}"></i> {% else %} <i class=
+              "bi bi-caret-up" id="like_svg_{{ headline_id }}"></i> {% endif
+              %}</a></span>
+              <p>
+                <span id="likes_{{ headline_id }}">{{ headline_likes }}</span>
+              </p>
+              <span><a id="dislike" onclick=
+              "updateLikes('{{ headline_id }}', false)">{% if user_choice == -1
+              %} <i class="bi bi-caret-down-fill" id=
+              "dislike_svg_{{ headline_id }}"></i> {% else %} <i class=
+              "bi bi-caret-down" id="dislike_svg_{{ headline_id }}"></i> {%
+              endif %}</a></span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div id="arrow_pages">
+          <h1>
+            1
+          </h1>
+          <a href="?page=1"><i class="bi bi-chevron-double-left"></i></a>
+          <a href="?page={{page-1}}"><i class=
+          "bi bi-chevron-left"></i></a>
+          <h1>
+            {{ page }}
+          </h1>
+          <a href="?page={{page+1}}"><i class=
+          "bi bi-chevron-right"></i></a> <a href=
+          "?page={{pages}}"><i class=
+          "bi bi-chevron-double-right"></i></a>
+          <h1>
+            {{ pages }}
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer_side">
+        <h3>
+          CONTENTS + PRIVACY
+        </h3>
+        <a href="../">Home</a> <a href="../#purpose">Our Purpose</a> <a href=
+        "../#time">Process</a> <a href="../#team">Team</a> <a href=
+        "https://www.youtube.com/watch?v=hoBb9oIFu8E">Privacy Policy</a>
+        <a href="https://www.youtube.com/watch?v=iik25wqIuFo">Mission Goal</a>
+      </div>
+
+      <div class="footer_center">
+        <h3>
+          MYSTERY?
+        </h3>
+
+        <form>
+          <input placeholder="Type Anything..." required="" type="email">
+          <br>
+          <button type="submit">MAYBE A TRY?</button>
+        </form>
+      </div>
+
+      <div class="footer_side">
+        <h3>
+          CONTACT
+        </h3>
+
+        <p>
+          2627 Hanover Street,
+          <br>
+          Palo Alto, CA 94304
+        </p>
+
+        <div class="socials">
+          <a href="https://www.facebook.com/aicampdotorg/"><i class=
+          "bi bi-facebook"></i></a> <a href=
+          "https://www.youtube.com/channel/UCUGJzo5EwViLGpAgYphNyzg"><i class=
+          "bi bi-youtube"></i></a> <a href=
+          "https://www.instagram.com/aicampofficial/"><i class=
+          "bi bi-instagram"></i></a> <a href=
+          "https://www.tiktok.com/@aicamp"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
