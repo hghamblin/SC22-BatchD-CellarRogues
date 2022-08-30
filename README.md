@@ -1,6 +1,12 @@
-# The Rogue - Florida Man Headline Generator - Kalen's Fork
+# The Rogue - Florida Man Headline Generator
 
-gonna be working a little more on this when i have more free time. check back for updates!
+# Team Members:
+* [Kalen Shamy](https://github.com/kalenshamy)
+* [Jehoon (Jamie) Ryu](https://github.com/mijnap1)
+* [Michael Huang](https://github.com/astoppop)
+* [Emily Kim-Vance](https://github.com/Orville1415)
+* [Parker Kline](https://github.com/ParkerKline)
+* [Ria Gulati](https://github.com/RiaGulati)
 
 # Server Setup Instructions
 
@@ -15,10 +21,3 @@ You'll want to edit [line 409](/app/main.py#L409) of the `main.py` file if using
 You'll want to open `model/gdrive.txt`, and download the files at the google drive links to the `model` folder.
 
 From there, run `python3 -m main` to start the server on local, most changes while developing will be picked up in realtime by the server. Note that upon cloning this repository an example project with an untrained model will show up upon running `python3 -m main`.
-
-
-# Update Log
-## V0
-[V0.0](https://github.com/KalenShamy/SC22-BatchD-CellarRogues/tree/fc43e0129fa2c70ca03f2049cceb546fe19a0708) - Forked Repo from [hghamblin/SC22-BatchD-CellarRogues](https://github.com/hghamblin/SC22-BatchD-CellarRogues) and Created New README File - (8/26/2022)
-
-V0.1 - Removed useless hidden files, clearer & easy setup - (8/30/2022)
