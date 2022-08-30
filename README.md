@@ -2,7 +2,7 @@
 
 gonna be working a little more on this when i have more free time. check back for updates!
 
-# Server Setup instructions
+# Server Setup Instructions
 
 cd into the `/app` folder
 
