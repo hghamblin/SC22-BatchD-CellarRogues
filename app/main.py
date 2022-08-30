@@ -405,7 +405,8 @@ def headline_explorer():
 
 
 if __name__ == '__main__':
-    website_url = 'cocalc5.ai-camp.dev'
+    website_url = '' # if hosting on production WSGI server, put URL or IP address here
 
-    print(f'Try to open\n\n    https://{website_url}' + base_url + '\n\n')
+    if website_url != '':
+        print(f'Try to open\n\n    https://{website_url}' + base_url + '\n\n')
     app.run(host='0.0.0.0', port=port, debug=True)
