@@ -405,8 +405,9 @@ def headline_explorer():
 
 
 if __name__ == '__main__':
-    website_url = '' # if hosting on production WSGI server, put URL or IP address here
+    website_url = 'localhost' # if hosting on production WSGI server, put URL or IP address here
+    is_https = False # if site uses https method, change value to True
 
     if website_url != '':
-        print(f'Try to open\n\n    https://{website_url}' + base_url + '\n\n')
+        print(f'Try to open\n\n    http{(is_https and "s") or ""}://{website_url}:{port}{base_url}\n\n')
     app.run(host='0.0.0.0', port=port, debug=True)
