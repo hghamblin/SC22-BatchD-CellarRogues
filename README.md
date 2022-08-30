@@ -2,11 +2,11 @@
 
 gonna be working a little more on this when i have more free time. check back for updates!
 
-# Server Setup instructions
+# Server Setup Instructions
 
 cd into the `/app` folder
 
-`python3 -m pip install -r requirements.txt`
+Run `python3 -m pip install -r requirements.txt` to download the libraries needed by the application.
 
 You'll want to edit [line 408](/app/main.py#L408) of the `main.py` file if using a production WSGI server to host the web app, and change `website_url ` to the URL or IP address of the WSGI server.
 
@@ -20,4 +20,5 @@ From there, run `python3 -m main` to start the server on local, most changes whi
 # Update Log
 ## V0
 [V0.0](https://github.com/KalenShamy/SC22-BatchD-CellarRogues/tree/fc43e0129fa2c70ca03f2049cceb546fe19a0708) - Forked Repo from [hghamblin/SC22-BatchD-CellarRogues](https://github.com/hghamblin/SC22-BatchD-CellarRogues) and Created New README File - (8/26/2022)
+
 V0.1 - Removed useless hidden files, clearer & easy setup - (8/30/2022)
