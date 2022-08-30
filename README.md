@@ -6,7 +6,7 @@ gonna be working a little more on this when i have more free time. check back fo
 
 cd into the `/app` folder
 
-`python3 -m pip install -r requirements.txt`
+Run `python3 -m pip install -r requirements.txt` to download the libraries needed by the application.
 
 You'll want to edit [line 408](/app/main.py#L408) of the `main.py` file if using a production WSGI server to host the web app, and change `website_url ` to the URL or IP address of the WSGI server.
 
