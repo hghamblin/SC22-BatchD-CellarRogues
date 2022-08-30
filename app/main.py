@@ -6,7 +6,7 @@ import pathlib
 
 # import stuff for our web server
 import flask
-from flask import Flask, request, redirect, url_for, render_template, session, jsonify
+from flask import Flask, request, redirect, render_template, session, jsonify
 from utils import get_base_url
 from random import choice, randint
 # import json
@@ -121,7 +121,7 @@ def signup():
             f.write("{}${}${}\n".format(username, salt, hashedPassword))
         with open(f'./votes/{username}.txt', 'w') as f:
             f.write('$')
-        return redirect(url_for('login'))
+        return redirect('../login')
 
 
 #         return 'Sign up successful'
@@ -154,16 +154,16 @@ def login():
                         user.id = username
                         flask_login.login_user(user)
                         f.close()
-                        return redirect(url_for('profile'))
+                        return redirect('../profile')
                     break
-            return redirect(url_for('login'))
+            return redirect('../login')
     return 'Bad login'
 
 
 @app.route(f'{base_url}/logout')
 def logout():
     flask_login.logout_user()
-    return redirect(url_for('home'))
+    return redirect('./')
 
 @flask_login.login_required
 @app.route(f'{base_url}/profile/')
@@ -209,7 +209,7 @@ def profile():
                                pages=ceil(len(headlines) / 20),
                                base_url=base_url)
     else:
-        return redirect(url_for('login'))
+        return redirect('../login')
 
 
 @login_manager.unauthorized_handler
