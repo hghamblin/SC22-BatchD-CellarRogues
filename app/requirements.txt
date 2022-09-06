@@ -54,3 +54,5 @@ Werkzeug==1.0.1
 wincertstore==0.2
 yarl==1.6.3
 uvicorn==0.17.6
+flask_login==0.6.2
+better_profanity==0.7.0
